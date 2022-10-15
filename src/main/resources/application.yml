@@ -1,0 +1,16 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: VbGdkG6PeHnaIH0mMunIkEqjkGdLcBHE
+            client-secret: -IqXwkboyMQcIuOnn9WoS8-6GQvaqx263A4ILeHcM46UGehaqlsSt32a_NSatPvV
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            # trailing slash is important!
+            issuer-uri: https://dev-rtlc59tc.us.auth0.com/

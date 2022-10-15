@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="sidebar" id="sidebar-container" class="bg-primary">
+    <div class="logo">
+        <a href="/home"><h4 class="text-light font-weight-bold mb-0">Libreria CJ Code</h4>
+        <img src="/images/logo.png" width="200px" height="200px"></a>
+    </div>
+    <div class="menu">
+        <a href="/transaction" class="d-block text-light p-3 border-0"><i class="icon ion-md-cash lead mr-2"></i>
+            Ingresos y Egresos </a>
+
+        <a th:if="${session.admin}" href="/user" class="d-block text-light p-3 border-0"><i class="icon ion-md-people lead mr-2"></i>
+            Usuarios</a>
+
+        <a th:if="${session.admin}" href="/enterprise" class="d-block text-light p-3 border-0"><i class="icon ion-md-business lead mr-2"></i>
+            Empresas</a>
+    </div>
+</div>
+</body>
+</html>

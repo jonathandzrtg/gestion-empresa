@@ -1,0 +1,38 @@
+<!-- src/main/resources/templates/index.html -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <title>Sistema de Gestion de Ingresos y Gastos</title>
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic">
+                <img src="images/libreria.png" alt="IMG">
+            </div>
+
+            <div class="login100-form" id="loginForm">
+        <span class="login100-form-title">
+          Bienvenido
+        </span>
+                <div sec:authorize="!isAuthenticated()" class="container-login100-form-btn">
+                    <a class="login100-form-btn" th:href="@{/oauth2/authorization/auth0}">
+                        Log In
+                    </a>
+                </div>
+                <div sec:authorize="isAuthenticated()" class="container-login100-form-btn">
+                    <a class="login100-form-btn" href="/home">
+                        Continuar
+                    </a>
+                    <br>
+                    <br>
+                    <br>
+                    <a class="login100-form-btn" th:href="@{/logout}">Salir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+
+    <!-- Ionic icons -->
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+    <title>Transacciones</title>
+</head>
+<body>
+<div class="d-flex" id="content-wrapper">
+
+    <div th:insert="sidebar :: sidebar">  </div>
+
+    <div class="w-100">
+        <div th:insert="navbar :: navbar">  </div>
+        <div id="content">
+            <section class="bg-light py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-8">
+                            <br>
+                            <br>
+                            <h1 class="font-weight-bold mb-0">Ingresos y Egresos</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="container" th:if="${session.admin}">
+                    <div class="d-flex flex-row-reverse">
+                        <div class="p-2">
+                            <a class="btn btn-outline-dark text-muted" style="text-align:center;" href="/transaction/form">Registrar nueva transaccion</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </section>
+            <section>
+                <div class="container">
+                    <div class="alert alert-success alert-dismissible" th:if="${success != null}" >
+                        <label th:text="${success}"></label>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                    <div class="alert alert-danger alert-dismissible" th:if="${error != null}" >
+                        <label th:text="${error}"></label>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Monto</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Fecha</th>
+                            <th th:if="${session.admin}" scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transaction : ${transaction}">
+                            <td th:text="${transaction.concept}"></td>
+                            <td th:text="${transaction.amount}"></td>
+                            <td th:text="${transaction.employee.name}"></td>
+                            <td th:text="${transaction.date}"></td>
+                            <td th:if="${session.admin}">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a th:href="@{/transaction/edit/{id}(id=${transaction.id})}" class="btn btn-primary">Editar</a>
+                                    <form th:action="@{/transaction/{id}(id=${transaction.id})}" th:method="delete">
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container">
+                    <div class="d-flex flex-row-reverse">
+                        <div class="p-2">
+                            Total
+                        </div>
+                        <div class="p-2">
+                            <input th:value="${total}" type="text" class="form-control" disabled>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+</body>
+</html>

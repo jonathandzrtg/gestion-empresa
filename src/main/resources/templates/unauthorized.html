@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="css/unauthorized.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="body">
+<div class="message">No esta autorizado para Ingresar al Sistema.
+</div>
+<div class="message2">Contacte con el administrador del sistema.
+    <br>
+    <br>
+    <a class="btn btn-light" th:href="@{/logout}">Regresar</a>
+</div>
+<div class="container">
+    <div class="neon">403</div>
+    <div class="door-frame">
+        <div class="door">
+            <div class="rectangle">
+            </div>
+            <div class="handle">
+            </div>
+            <div class="window">
+                <div class="eye">
+                </div>
+                <div class="eye eye2">
+                </div>
+                <div class="leaf">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

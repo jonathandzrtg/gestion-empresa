@@ -1,0 +1,6 @@
+function clearFormTransaction(){
+    document.getElementById("concept").value = "";
+    document.getElementById("mount").value = "";
+    document.getElementById("user").value = "";
+    document.getElementById("enterprise").value = "";
+}
